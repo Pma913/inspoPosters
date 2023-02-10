@@ -3,7 +3,13 @@ var poster = document.querySelector('.poster-img');
 var quote = document.querySelector('.poster-quote');
 var title = document.querySelector('.poster-title');
 var button = document.querySelector('.show-random');
-
+var makeButton = document.querySelector('.show-form');
+var posterForm = document.querySelector('.poster-form');
+var mainPoster = document.querySelector('.main-poster');
+var neverMind = document.querySelector('.show-main')
+var savedButton = document.querySelector('.show-saved')
+var savedPostersPage = document.querySelector('.saved-posters')
+var savedPosterButton = document.querySelector('.back-to-main')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,6 +117,42 @@ poster.src = images[getRandomIndex(images)];
 
 // event listeners go here 👇
 button.addEventListener('click', showRandomPoster);
+makeButton.addEventListener('click', showForm)
+savedButton.addEventListener('click', showSavedPosters)
+neverMind.addEventListener('click', hideForm)
+savedPosterButton.addEventListener('click', hideSavedPosters)
+
+function hide (element)  {
+  element.classList.add("hidden");
+}
+
+function show (element) {
+  element.classList.remove("hidden");
+}
+function showForm() {
+  hide(mainPoster)
+  show(posterForm)
+ 
+  }
+function hideForm(){
+  hide(posterForm)
+  show(mainPoster)
+}
+
+function showSavedPosters(){
+  hide(mainPoster)
+  show(savedPostersPage)
+}
+
+function hideSavedPosters(){
+  hide(savedPostersPage)
+  show(mainPoster)
+
+}
+
+//event.prevent default
+
+
 
 // functions and event handlers go here 👇
 // (we've provided one for you to get you started)!
