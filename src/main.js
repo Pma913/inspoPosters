@@ -6,10 +6,14 @@ var button = document.querySelector('.show-random');
 var makeButton = document.querySelector('.show-form');
 var posterForm = document.querySelector('.poster-form');
 var mainPoster = document.querySelector('.main-poster');
-var neverMind = document.querySelector('.show-main')
-var savedButton = document.querySelector('.show-saved')
-var savedPostersPage = document.querySelector('.saved-posters')
-var savedPosterButton = document.querySelector('.back-to-main')
+var neverMind = document.querySelector('.show-main');
+var savedButton = document.querySelector('.show-saved');
+var savedPostersPage = document.querySelector('.saved-posters');
+var savedPosterButton = document.querySelector('.back-to-main');
+var imageUrlInput = document.querySelector('#poster-image-url');
+var posterTitleInput = document.querySelector('#poster-title');
+var posterQuoteInput = document.querySelector('#poster-quote');
+var makePosterButton = document.querySelector('.make-poster');
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -111,16 +115,22 @@ var quotes = [
 var savedPosters = [];
 var currentPoster;
 
-quote.innerText = quotes[getRandomIndex(quotes)]
-title.innerText = titles[getRandomIndex(titles)]
+// imageUrlInput =
+// posterTitleInput 
+//  posterQuoteInput 
+//  makePosterButton
+
+quote.innerText = quotes[getRandomIndex(quotes)];
+title.innerText = titles[getRandomIndex(titles)];
 poster.src = images[getRandomIndex(images)];
 
 // event listeners go here 👇
 button.addEventListener('click', showRandomPoster);
-makeButton.addEventListener('click', showForm)
-savedButton.addEventListener('click', showSavedPosters)
-neverMind.addEventListener('click', hideForm)
-savedPosterButton.addEventListener('click', hideSavedPosters)
+makeButton.addEventListener('click', showForm);
+savedButton.addEventListener('click', showSavedPosters);
+neverMind.addEventListener('click', hideForm);
+savedPosterButton.addEventListener('click', hideSavedPosters);
+makePosterButton.addEventListener('click', createPoster);
 
 function hide (element)  {
   element.classList.add("hidden");
@@ -134,20 +144,28 @@ function showForm() {
   show(posterForm)
  
   }
-function hideForm(){
+function hideForm() {
   hide(posterForm)
   show(mainPoster)
 }
 
-function showSavedPosters(){
+function showSavedPosters() {
   hide(mainPoster)
   show(savedPostersPage)
 }
 
-function hideSavedPosters(){
+function hideSavedPosters() {
   hide(savedPostersPage)
   show(mainPoster)
+}
 
+function createPoster() {
+  quote.innerText = posterQuoteInput.value;
+  title.innerText = posterTitleInput.value;
+  poster.src = imageUrlInput.value;
+  hideForm(); 
+  event.preventDefault();
+  
 }
 
 //event.prevent default
