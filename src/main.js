@@ -14,6 +14,7 @@ var imageUrlInput = document.querySelector('#poster-image-url');
 var posterTitleInput = document.querySelector('#poster-title');
 var posterQuoteInput = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
+var saveThisPosterButton = document.querySelector('.save-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -113,16 +114,16 @@ var quotes = [
   "A champion is defined not by their wins but by how they can recover when they fall."
 ];
 var savedPosters = [];
-var currentPoster;
+var currentPoster = 
 
 // imageUrlInput =
 // posterTitleInput 
 //  posterQuoteInput 
 //  makePosterButton
 
-quote.innerText = quotes[getRandomIndex(quotes)];
-title.innerText = titles[getRandomIndex(titles)];
-poster.src = images[getRandomIndex(images)];
+// quote.innerText = quotes[getRandomIndex(quotes)];
+// title.innerText = titles[getRandomIndex(titles)];
+// poster.src = images[getRandomIndex(images)];
 
 // event listeners go here 👇
 button.addEventListener('click', showRandomPoster);
@@ -131,6 +132,8 @@ savedButton.addEventListener('click', showSavedPosters);
 neverMind.addEventListener('click', hideForm);
 savedPosterButton.addEventListener('click', hideSavedPosters);
 makePosterButton.addEventListener('click', createPoster);
+saveThisPosterButton.addEventListener('click', pushPosters)
+window.addEventListener('load', loadWindow)
 
 function hide (element)  {
   element.classList.add("hidden");
@@ -160,15 +163,27 @@ function hideSavedPosters() {
 }
 
 function createPoster() {
-  quote.innerText = posterQuoteInput.value;
-  title.innerText = posterTitleInput.value;
-  poster.src = imageUrlInput.value;
-  hideForm(); 
-  event.preventDefault();
+ 
+  currentPoster = new Poster(imageUrlInput.value, posterTitleInput.value, posterQuoteInput.value)
+  quote.innerText = currentPoster.quote
+  title.innerText = currentPoster.title
+  poster.src = currentPoster.imageURL
   
+  hideForm(); 
+  event.preventDefault(); 
 }
 
-//event.prevent default
+function loadWindow(){
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+  quote.innerText = currentPoster.quote
+  title.innerText = currentPoster.title
+  poster.src = currentPoster.imageURL
+
+}
+function pushPosters(){
+savedPosters.push(currentPoster)
+}
+
 
 
 
@@ -179,8 +194,9 @@ function getRandomIndex(array) {
 }
 
 function showRandomPoster(){
-  quote.innerText = quotes[getRandomIndex(quotes)];
-  title.innerText = titles[getRandomIndex(titles)];
-  poster.src = images[getRandomIndex(images)];
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+  quote.innerText = currentPoster.quote
+  title.innerText = currentPoster.title
+  poster.src = currentPoster.imageURL;
 }
 
