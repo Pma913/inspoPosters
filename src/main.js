@@ -181,7 +181,12 @@ function loadWindow(){
 
 }
 function pushPosters(){
-savedPosters.push(currentPoster)
+  if(savedPosters.length === 0){
+    savedPosters.push(currentPoster)
+  } 
+  if(!savedPosters.includes(currentPoster)) {
+      savedPosters.push(currentPoster)
+  }
 }
 
 
