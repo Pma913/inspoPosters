@@ -1,27 +1,3 @@
-# Hang In There
-
-A boilerplate repo. 
-
-## Set Up
-
-1. One teammate: fork this repository
-2. Clone down your new, forked repo
-3. cd into the repository
-4. Open it in your text editor
-5. Add all project partners and your assigned instructor as collaborators on the repository
-
-Project spec & rubric can be found [here](https://frontend.turing.edu/projects/module-1/hang-in-there.html)
-
-To view your project:
-
-1. In your terminal, navigate to your project repo
-2. Run the command `open index.html`
-  
-______________________________________________________  
-# README Template  
-Before turning this project in, erase this line and everything above it and fill in the info below.  
-______________________________________________________  
-
 # Hang in There  
 
 ### Abstract:
@@ -37,7 +13,7 @@ They would have to have a git hub. We would send a link to our repo. They would 
 ### Preview of App:
 [//]: <> (Provide ONE gif or screenshot of your application - choose the "coolest" piece of functionality to show off.)
 
-F4180177-C928-497E-BFAC-462B76B9B6D7.jpeg
+![A cool visual aspect](F4180177-C928-497E-BFAC-462B76B9B6D7.jpeg)
 
 ### Context:
 [//]: <> (Give some context for the project here. How long did you have to work on it? How far into the Turing program are you?)
