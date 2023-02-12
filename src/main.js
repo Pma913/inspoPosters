@@ -16,6 +16,7 @@ var posterQuoteInput = document.querySelector('#poster-quote');
 var makePosterButton = document.querySelector('.make-poster');
 var saveThisPosterButton = document.querySelector('.save-poster')
 var savedPostersGrid = document.querySelector('.saved-posters-grid')
+var removePoster = document.querySelector('.remove-poster')
 // we've provided you with some data to work with 👇
 var images = [
   "./assets/bees.jpg",
@@ -117,15 +118,6 @@ var quotes = [
 var savedPosters = [];
 var currentPoster = 
 
-// imageUrlInput =
-// posterTitleInput 
-//  posterQuoteInput 
-//  makePosterButton
-
-// quote.innerText = quotes[getRandomIndex(quotes)];
-// title.innerText = titles[getRandomIndex(titles)];
-// poster.src = images[getRandomIndex(images)];
-
 // event listeners go here 👇
 button.addEventListener('click', showRandomPoster);
 makeButton.addEventListener('click', showForm);
@@ -136,7 +128,31 @@ makePosterButton.addEventListener('click', createPoster);
 saveThisPosterButton.addEventListener('click', pushPosters)
 window.addEventListener('load', loadWindow)
 
+// functions and event handlers go here 👇
+// (we've provided one for you to get you started)!
 
+function getRandomIndex(array) {
+  return Math.floor(Math.random() * array.length);
+}
+
+function loadWindow(){
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+  quote.innerText = currentPoster.quote
+  title.innerText = currentPoster.title
+  poster.src = currentPoster.imageURL
+}
+
+function showRandomPoster(){
+  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
+  quote.innerText = currentPoster.quote
+  title.innerText = currentPoster.title
+  poster.src = currentPoster.imageURL;
+}
+
+function hideSavedPosters() {
+  hide(savedPostersPage)
+  show(mainPoster)
+}
 
 function hide (element)  {
   element.classList.add("hidden");
@@ -145,6 +161,7 @@ function hide (element)  {
 function show (element) {
   element.classList.remove("hidden");
 }
+
 function showForm() {
   hide(mainPoster)
   show(posterForm)
@@ -161,28 +178,16 @@ function showSavedPosters() {
 
   for (var i = 0; i < savedPosters.length; i++)
   savedPostersGrid.innerHTML += ` 
-  <article class="mini-poster">
-     <img class="img" src="${savedPosters[i].imageURL}" alt="nothin' to see here">
-      <h2 class="h2">"${savedPosters[i].title}"</h2>
-      <h4 class="h4">"${savedPosters[i].quote}"</h4> 
-  </article>`
-  
-
-   
-      //savedPostersGrid.classList.add('mini-poster', 'h2', 'h4', 'img')
-      
-
-
-
-}
-
-function hideSavedPosters() {
-  hide(savedPostersPage)
-  show(mainPoster)
+  <button class="remove-poster">  
+    <article class="mini-poster">
+         <img class="img" src="${savedPosters[i].imageURL}" alt="inspirational photo">
+            <h2 class="h2">"${savedPosters[i].title}"</h2>
+            <h4 class="h4">"${savedPosters[i].quote}"</h4> 
+    </article>
+  </button>`
 }
 
 function createPoster() {
- 
   currentPoster = new Poster(imageUrlInput.value, posterTitleInput.value, posterQuoteInput.value)
   quote.innerText = currentPoster.quote
   title.innerText = currentPoster.title
@@ -192,13 +197,6 @@ function createPoster() {
   event.preventDefault(); 
 }
 
-function loadWindow(){
-  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
-  quote.innerText = currentPoster.quote
-  title.innerText = currentPoster.title
-  poster.src = currentPoster.imageURL
-
-}
 function pushPosters(){
   if(!savedPosters.includes(currentPoster)) {
       savedPosters.push(currentPoster)
@@ -208,16 +206,6 @@ function pushPosters(){
 
 
 
-// functions and event handlers go here 👇
-// (we've provided one for you to get you started)!
-function getRandomIndex(array) {
-  return Math.floor(Math.random() * array.length);
-}
 
-function showRandomPoster(){
-  currentPoster = new Poster(images[getRandomIndex(images)], titles[getRandomIndex(titles)], quotes[getRandomIndex(quotes)])
-  quote.innerText = currentPoster.quote
-  title.innerText = currentPoster.title
-  poster.src = currentPoster.imageURL;
-}
+
 
