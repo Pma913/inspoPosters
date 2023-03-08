@@ -1,4 +1,5 @@
 # Hang in There  
+## [try it here](https://pma913.github.io/inspoPosters/)
 
 ### Abstract:
 [//]: <> (Briefly describe what you built and its features. What problem is the app solving? How does this application solve that problem?)
@@ -25,7 +26,7 @@ A lot of learning steps. Really difficult to find a place to start. roughly arou
 
 Elise Jones: https://github.com/Elise-JonesA  
 
-Patrick Ankiewicz: https://github.com/Pma913
+[Patrick Ankiewicz](https://www.linkedin.com/in/patrick-ankiewicz/)
 
 ### Learning Goals:
 [//]: <> (What were the learning goals of this project? What tech did you work with?)
