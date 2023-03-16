@@ -197,16 +197,13 @@ function pushPosters(){
 
 function deletePoster(event){
     var element = event.target;
-    if(element.classList.contains("img") ||
-      element.classList.contains("h2") ||
-       element.classList.contains("h4")){
-        for (var i = 0; i < savedPosters.length; i++){
-          if (element.parentNode.id || element.id === savedPosters[i].id) {
-            savedPosters.splice(i,1);
-          }
-          element.parentElement.remove();
-        }
-    }
+    
+    savedPosters.forEach((poster, index) => {
+      if (parseInt(element.parentNode.id || element.id) === poster.id) {
+        savedPosters.splice(index, 1);
+        element.closest('article').remove();
+      }
+    });
 }
 
 
