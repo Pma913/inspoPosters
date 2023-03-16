@@ -119,10 +119,10 @@ var currentPoster;
 
 
 button.addEventListener('click', showRandomPoster);
-makeButton.addEventListener('click', showForm);
-savedButton.addEventListener('click', showSavedPosters);
-neverMind.addEventListener('click', hideForm);
-savedPosterButton.addEventListener('click', hideSavedPosters);
+makeButton.addEventListener('click', toggleForm);
+savedButton.addEventListener('click', toggleSavedPosters);
+neverMind.addEventListener('click', toggleForm);
+savedPosterButton.addEventListener('click', toggleSavedPosters);
 makePosterButton.addEventListener('click', createPoster);
 saveThisPosterButton.addEventListener('click', pushPosters)
 window.addEventListener('load', loadWindow);
@@ -143,32 +143,14 @@ function showRandomPoster(){
   poster.src = currentPoster.imageURL;
 }
 
-function hideSavedPosters() {
-  hide(savedPostersPage);
-  show(mainPoster);
+function toggleSavedPosters() {
+  mainPoster.classList.toggle("hidden");
+  savedPostersPage.classList.toggle("hidden");
 }
 
-function showSavedPosters() {
-  hide(mainPoster);
-  show(savedPostersPage);
-}
-
-function hide (element)  {
-  element.classList.add("hidden");
-}
-
-function show (element) {
-  element.classList.remove("hidden");
-}
-
-function showForm() {
-  hide(mainPoster);
-  show(posterForm);
-  
-}
-function hideForm() {
-  hide(posterForm);
-  show(mainPoster);
+function toggleForm() {
+  mainPoster.classList.toggle("hidden");
+  posterForm.classList.toggle("hidden");
 }
 
 function createPoster(event) {
@@ -178,7 +160,7 @@ function createPoster(event) {
   title.innerText = currentPoster.title;
   poster.src = currentPoster.imageURL;
   
-  hideForm(); 
+  toggleForm(); 
   event.preventDefault(); 
 }
 
@@ -205,7 +187,6 @@ function deletePoster(event){
       }
     });
 }
-
 
 function getRandomIndex(array) {
   return Math.floor(Math.random() * array.length);
