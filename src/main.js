@@ -171,7 +171,7 @@ function hideForm() {
   show(mainPoster);
 }
 
-function createPoster() {
+function createPoster(event) {
   currentPoster = new Poster(imageUrlInput.value, posterTitleInput.value, posterQuoteInput.value);
   
   quote.innerText = currentPoster.quote;
@@ -179,7 +179,7 @@ function createPoster() {
   poster.src = currentPoster.imageURL;
   
   hideForm(); 
-  preventDefault(); 
+  event.preventDefault(); 
 }
 
 function pushPosters(){
@@ -189,8 +189,8 @@ function pushPosters(){
       savedPostersGrid.innerHTML += `  
       <article class="mini-poster" id="${currentPoster.id}">
         <img class="img" src="${currentPoster.imageURL}" alt="inspirational photo">
-        <h2 class="h2">"${currentPoster.title}"</h2>
-        <h4 class="h4">"${currentPoster.quote}"</h4> 
+        <h2 class="h2">${currentPoster.title}</h2>
+        <h4 class="h4">${currentPoster.quote}</h4> 
       </article>`;
     }
 }
